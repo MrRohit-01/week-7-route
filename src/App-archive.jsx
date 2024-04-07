@@ -1,44 +1,47 @@
-// import { Suspense } from "react";
-// import React from "react";
-// import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-// const Landing = React.lazy(() => import("./pages/Landing"));
-// const Dashboard = React.lazy(() => import("./pages/Dashboard"));
 
-// export function App() {
+// import { countAtom, isCountEven } from "./store/atoms/count";
+// import { RecoilRoot, useSetRecoilState, useRecoilValue } from "recoil";
+
+// function App() {
+//   return (
+//     <RecoilRoot>
+//       <CountValue></CountValue>
+//     </RecoilRoot>
+//   );
+// }
+// function CountValue() {
 //   return (
 //     <>
-//       <BrowserRouter>
-//         <Suspense fallback={<div>Loading...</div>}>
-//           <Routes>
-//             <Route path="/dashboard" element={<Dashboard />}></Route>
-//             <Route path="/" element={<Landing />}></Route>
-//           </Routes>
-//         </Suspense>
-//       </BrowserRouter>
+//       <CountRender></CountRender>
+//       <br></br>
+//       <ButtonCount></ButtonCount>
 //     </>
 //   );
 // }
-// function Appbar() {
-//   const navigate = useNavigate();
+// function CountRender() {
+//   const count = useRecoilValue(countAtom);
 //   return (
 //     <>
-//       <div style={{ backgroundColor: "blue", color: "white" }}>Hello world</div>
-//       <button
-//         onClick={() => {
-//           navigate("/");
-//         }}
-//       >
-//         Landing page
-//       </button>
-//       <button
-//         onClick={() => {
-//           navigate("/dashboard");
-//         }}
-//       >
-//         Dashboard
-//       </button>
+//       {count}
 //     </>
 //   );
 // }
+// function IsEven() {
+//   const countEven = useRecoilValue(isCountEven);
+//   return <>{countEven}</>;
 
+//   return;
+// }
+// function ButtonCount() {
+//   const setCount = useSetRecoilState(countAtom);
+
+//   return (
+//     <>
+//       <button onClick={() => setCount((count) => count + 1)}>Increment</button>
+//       <button onClick={() => setCount((count) => count - 1)}>Decrement</button>
+//       <br></br>
+//       <IsEven />
+//     </>
+//   );
+// }
 // export default App;

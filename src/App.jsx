@@ -1,46 +1,11 @@
-import { countAtom, isCountEven } from "./store/atoms/count";
-import { RecoilRoot, useSetRecoilState, useRecoilValue } from "recoil";
+import { BrowserRouter } from "react-router-dom";
 
-function App() {
-  return (
-    <RecoilRoot>
-      <CountValue></CountValue>
-    </RecoilRoot>
-  );
-}
-function CountValue() {
-  return (
-    <>
-      <CountRender></CountRender>
-      <br></br>
-      <ButtonCount></ButtonCount>
-    </>
-  );
-}
-function CountRender() {
-  const count = useRecoilValue(countAtom);
-  return (
-    <>
-      {count}
-    </>
-  );
-}
-function IsEven() {
-  const countEven = useRecoilValue(isCountEven);
-  return <>{countEven}</>;
+export default function App(){
 
-  return;
+  return <>
+  <div>Hi There</div>
+   <BrowserRouter>
+    
+   </BrowserRouter>
+  </>
 }
-function ButtonCount() {
-  const setCount = useSetRecoilState(countAtom);
-
-  return (
-    <>
-      <button onClick={() => setCount((count) => count + 1)}>Increment</button>
-      <button onClick={() => setCount((count) => count - 1)}>Decrement</button>
-      <br></br>
-      <IsEven />
-    </>
-  );
-}
-export default App;
