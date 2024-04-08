@@ -1,15 +1,25 @@
-import { atom,selector } from "recoil";
+import { atom, selector } from "recoil";
+import axios from "axios";
 
-export const countAtom = atom({
-  key: "countAtom",
-  default: 0,
+export const notifications = atom({
+  key: "networkAtom",
+  default: selector({
+    key: "networkSelector",
+    get: async () => {
+      const res =await axios.get("https://sum-server.100xdevs.com/notifications");
+      return res.data
+ }}),
 });
-export const isCountEven = selector({
-  key: 'IsCountEven',
-  get: ({get}) => {
-    const toggle = get(countAtom);
-    if (toggle%2==0) {
-      return <>{"this is even"}</>;
-    }
+
+export const totalNotificationSelector = selector({
+  key: "totalNotificationSelector",
+  get: ({ get }) => {
+    const allNotifications = get(notifications);
+    return (
+      allNotifications.network +
+      allNotifications.jobs +
+      allNotifications.notifications +
+      allNotifications.messaging
+    );
   },
-});      
+});
